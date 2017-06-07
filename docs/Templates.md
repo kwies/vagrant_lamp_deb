@@ -6,15 +6,15 @@
 
 # Available Templates
 
-* see folder [bin/vagrant](BASEFOLDER/bin/vagrant)
+* see folder [bin/vagrant](bin/vagrant)
 * oldstable
-    * folder: 'BASEFOLDER/bin/vagrant/oldstable'
+    * folder: [bin/vagrant/oldstable](bin/vagrant/oldstable)
     * currently not available
 * stable
-    * folder: 'BASEFOLDER/bin/vagrant/stable'
+    * folder: [bin/vagrant/stable](bin/vagrant/stable)
     * Debian 8.x "jessie"
 * testing
-    * folder: 'BASEFOLDER/bin/vagrant/testing'
+    * folder: [bin/vagrant/testing](bin/vagrant/testing)
     * Debian 9.x "stretch"
 
 # Run Steps
