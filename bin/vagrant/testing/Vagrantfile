@@ -1,0 +1,71 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
+## vagrant documentation: http://docs.vagrantup.com
+
+
+unless Vagrant.has_plugin?("vagrant-vbguest")
+  raise 'plugin vagrant-vbguest is not installed!'
+end
+
+class HackyGuestAdditionsInstaller < VagrantVbguest::Installers::Linux
+  def install(opts=nil, &block)
+    super_garbage_hack = <<-EOF
+apt-get clean 
+apt-get update 
+apt-get upgrade -y
+apt-get dist-upgrade -y
+apt-get install -y build-essential linux-headers-amd64 dkms
+reboot
+EOF
+    communicate.sudo(super_garbage_hack)
+    super
+  end
+end
+
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  ## 64 bit 
+  #config.vm.box = "debian/stretch64"
+  config.vm.box = "fujimakishouten/debian-stretch64"
+  ##
+
+  ## guest additions installer
+  #config.vbguest.installer = HackyGuestAdditionsInstaller
+  #config.vbguest.installer_arguments = "--nox11 -- --force"
+
+  ## cpu, ram
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 1
+  end
+
+  ## shared folder
+  config.vm.synced_folder "config/", "/vagrant_config/"
+  config.vm.synced_folder "../../../src/", "/vagrant_data/"
+  # default shared folder
+  ##config.vm.synced_folder "./", "/vagrant/"
+
+  ## forwarded ports
+  config.vm.network "forwarded_port", guest: 80, host: 8080  
+
+  ## hostname
+  config.vm.hostname = "dev.local"
+
+  ## assign IP address
+#  config.vm.network "private_network", ip: "192.168.50.4"
+
+  ## NOTE: 
+  ## to activate DNS, add the following entry to your local hosts file (http://en.wikipedia.org/wiki/Hosts_%28file%29)
+  ## (FORMAT: <IPADRESS> <HOSTNAME>)
+  ##
+  ## 192.168.50.4 dev.local
+
+  ## provision
+  config.vm.provision :shell, :path => "config/shell/base.sh"
+  config.vm.provision :shell, :path => "config/shell/custom_php.sh"
+  ##
+end
+
+

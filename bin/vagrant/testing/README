@@ -1,0 +1,7 @@
+# README
+
+* Distribution: Debian 9.x (stretch)
+* Apache 2.4
+* PHP: 7.0 (php-fpm)
+* mariadb 10.1
+* phpmyadmin: http://localhost:8080/phpmyadmin
