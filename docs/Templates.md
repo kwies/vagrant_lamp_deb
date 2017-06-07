@@ -1,6 +1,6 @@
 # Requirements
 
-* General requirements (see 'GettingStarted.pdf')
+* General requirements: see  [GettingStarted.md](GettingStarted.md) 
 * vagrant plugins
     * vagrant-vbguest
 
@@ -8,13 +8,13 @@
 
 * see folder [BASEFOLDER/bin/vagrant](/bin/vagrant)
 * oldstable
-    * folder: [bin/vagrant/oldstable](bin/vagrant/oldstable)
+    * folder: [BASEFOLDER/bin/vagrant/oldstable](/bin/vagrant/oldstable)
     * currently not available
 * stable
-    * folder: [bin/vagrant/stable](bin/vagrant/stable)
+    * folder: [BASEFOLDER/bin/vagrant/stable](/bin/vagrant/stable)
     * Debian 8.x "jessie"
 * testing
-    * folder: [bin/vagrant/testing](bin/vagrant/testing)
+    * folder: [BASEFOLDER/bin/vagrant/testing](/bin/vagrant/testing)
     * Debian 9.x "stretch"
 
 # Run Steps
