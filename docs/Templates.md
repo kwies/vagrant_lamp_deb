@@ -6,7 +6,7 @@
 
 # Available Templates
 
-* see folder [bin/vagrant](bin/vagrant)
+* see folder [BASEFOLDER/bin/vagrant](/bin/vagrant)
 * oldstable
     * folder: [bin/vagrant/oldstable](bin/vagrant/oldstable)
     * currently not available
